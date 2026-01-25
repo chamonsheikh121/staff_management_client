@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
-import { DashboardLayout } from '@/components/DashboardLayout';
-import { StatsCard } from '@/components/StatsCard';
-import { AppointmentCard } from '@/components/AppointmentCard';
-import { StaffCard } from '@/components/StaffCard';
-import { ActivityLogItem } from '@/components/ActivityLogItem';
-import { Button } from '@/components/ui/button';
+import { useMemo } from "react";
+import { DashboardLayout } from "@/components/DashboardLayout";
+import { StatsCard } from "@/components/StatsCard";
+import { AppointmentCard } from "@/components/AppointmentCard";
+import { StaffCard } from "@/components/StaffCard";
+import { ActivityLogItem } from "@/components/ActivityLogItem";
+import { Button } from "@/components/ui/button";
 import {
   Calendar,
   Clock,
@@ -12,14 +12,14 @@ import {
   Users,
   ArrowRight,
   TrendingUp,
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   useAppointmentStore,
   useStaffStore,
   useServiceStore,
   useActivityLogStore,
-} from '@/store';
+} from "@/store";
 import {
   BarChart,
   Bar,
@@ -31,7 +31,7 @@ import {
   PieChart,
   Pie,
   Cell,
-} from 'recharts';
+} from "recharts";
 
 export default function DashboardPage() {
   const { appointments } = useAppointmentStore();
@@ -39,13 +39,19 @@ export default function DashboardPage() {
   const { services } = useServiceStore();
   const { logs } = useActivityLogStore();
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
 
   const stats = useMemo(() => {
     const todayAppointments = appointments.filter((a) => a.date === today);
-    const scheduled = todayAppointments.filter((a) => a.status === 'Scheduled').length;
-    const completed = todayAppointments.filter((a) => a.status === 'Completed').length;
-    const inQueue = appointments.filter((a) => a.staffId === null && a.status === 'Scheduled').length;
+    const scheduled = todayAppointments.filter(
+      (a) => a.status === "Scheduled",
+    ).length;
+    const completed = todayAppointments.filter(
+      (a) => a.status === "Completed",
+    ).length;
+    const inQueue = appointments.filter(
+      (a) => a.staffId === null && a.status === "Scheduled",
+    ).length;
 
     return {
       total: todayAppointments.length,
@@ -58,7 +64,8 @@ export default function DashboardPage() {
   const staffLoad = useMemo(() => {
     return staff.map((s) => {
       const todayAppointments = appointments.filter(
-        (a) => a.staffId === s.id && a.date === today && a.status !== 'Cancelled'
+        (a) =>
+          a.staffId === s.id && a.date === today && a.status !== "Cancelled",
       ).length;
       return {
         ...s,
@@ -69,9 +76,9 @@ export default function DashboardPage() {
 
   const chartData = useMemo(() => {
     return staffLoad
-      .filter((s) => s.availabilityStatus === 'Available')
+      .filter((s) => s.availabilityStatus === "Available")
       .map((s) => ({
-        name: s.name.split(' ')[0],
+        name: s.name.split(" ")[0],
         appointments: s.appointmentsToday,
         capacity: s.dailyCapacity,
       }));
@@ -79,15 +86,19 @@ export default function DashboardPage() {
 
   const pieData = useMemo(() => {
     return [
-      { name: 'Scheduled', value: stats.scheduled, color: 'hsl(var(--info))' },
-      { name: 'Completed', value: stats.completed, color: 'hsl(var(--success))' },
-      { name: 'In Queue', value: stats.inQueue, color: 'hsl(var(--warning))' },
+      { name: "Scheduled", value: stats.scheduled, color: "hsl(var(--info))" },
+      {
+        name: "Completed",
+        value: stats.completed,
+        color: "hsl(var(--success))",
+      },
+      { name: "In Queue", value: stats.inQueue, color: "hsl(var(--warning))" },
     ].filter((d) => d.value > 0);
   }, [stats]);
 
   const upcomingAppointments = useMemo(() => {
     return appointments
-      .filter((a) => a.date === today && a.status === 'Scheduled' && a.staffId)
+      .filter((a) => a.date === today && a.status === "Scheduled" && a.staffId)
       .slice(0, 4);
   }, [appointments, today]);
 
@@ -127,9 +138,11 @@ export default function DashboardPage() {
           />
           <StatsCard
             title="Active Staff"
-            value={staff.filter((s) => s.availabilityStatus === 'Available').length}
+            value={
+              staff.filter((s) => s.availabilityStatus === "Available").length
+            }
             icon={Users}
-            description={`${staff.filter((s) => s.availabilityStatus === 'On Leave').length} on leave`}
+            description={`${staff.filter((s) => s.availabilityStatus === "On Leave").length} on leave`}
             variant="info"
           />
         </div>
@@ -150,21 +163,24 @@ export default function DashboardPage() {
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} barGap={8}>
-                  <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    className="stroke-border"
+                  />
                   <XAxis
                     dataKey="name"
-                    tick={{ fill: 'hsl(var(--muted-foreground))' }}
-                    axisLine={{ stroke: 'hsl(var(--border))' }}
+                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                    axisLine={{ stroke: "hsl(var(--border))" }}
                   />
                   <YAxis
-                    tick={{ fill: 'hsl(var(--muted-foreground))' }}
-                    axisLine={{ stroke: 'hsl(var(--border))' }}
+                    tick={{ fill: "hsl(var(--muted-foreground))" }}
+                    axisLine={{ stroke: "hsl(var(--border))" }}
                   />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'hsl(var(--card))',
-                      border: '1px solid hsl(var(--border))',
-                      borderRadius: '8px',
+                      backgroundColor: "hsl(var(--card))",
+                      border: "1px solid hsl(var(--border))",
+                      borderRadius: "8px",
                     }}
                   />
                   <Bar
@@ -189,7 +205,9 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="font-semibold">Appointment Status</h3>
-                <p className="text-sm text-muted-foreground">Today&apos;s breakdown</p>
+                <p className="text-sm text-muted-foreground">
+                  Today&apos;s breakdown
+                </p>
               </div>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -211,9 +229,9 @@ export default function DashboardPage() {
                     </Pie>
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: 'hsl(var(--card))',
-                        border: '1px solid hsl(var(--border))',
-                        borderRadius: '8px',
+                        backgroundColor: "hsl(var(--card))",
+                        border: "1px solid hsl(var(--border))",
+                        borderRadius: "8px",
                       }}
                     />
                   </PieChart>
@@ -245,7 +263,9 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="font-semibold">Upcoming Appointments</h3>
-                <p className="text-sm text-muted-foreground">Today&apos;s schedule</p>
+                <p className="text-sm text-muted-foreground">
+                  Today&apos;s schedule
+                </p>
               </div>
               <Link to="/appointments">
                 <Button variant="ghost" size="sm">
@@ -261,7 +281,9 @@ export default function DashboardPage() {
                     key={appointment.id}
                     appointment={appointment}
                     staff={staff.find((s) => s.id === appointment.staffId)}
-                    service={services.find((s) => s.id === appointment.serviceId)}
+                    service={services.find(
+                      (s) => s.id === appointment.serviceId,
+                    )}
                     compact
                   />
                 ))
