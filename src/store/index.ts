@@ -11,6 +11,8 @@ export interface User {
 export interface Staff {
   id: string;
   name: string;
+  email?: string;
+  phone?: string;
   serviceType: 'Doctor' | 'Consultant' | 'Support Agent';
   dailyCapacity: number;
   availabilityStatus: 'Available' | 'On Leave';
@@ -49,10 +51,8 @@ export interface ActivityLog {
 interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
-  signup: (email: string, password: string, name: string) => Promise<boolean>;
+  login: (user: User) => void;
   logout: () => void;
-  demoLogin: () => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -60,40 +60,19 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       user: null,
       isAuthenticated: false,
-      login: async (email: string, password: string) => {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        if (email && password) {
-          set({
-            user: { id: '1', email, name: email.split('@')[0] },
-            isAuthenticated: true,
-          });
-          return true;
-        }
-        return false;
-      },
-      signup: async (email: string, password: string, name: string) => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        if (email && password && name) {
-          set({
-            user: { id: '1', email, name },
-            isAuthenticated: true,
-          });
-          return true;
-        }
-        return false;
+      login: (user: User) => {
+        set({
+          user,
+          isAuthenticated: true,
+        });
       },
       logout: () => {
         set({ user: null, isAuthenticated: false });
       },
-      demoLogin: () => {
-        set({
-          user: { id: 'demo', email: 'demo@queuemaster.com', name: 'Demo User' },
-          isAuthenticated: true,
-        });
-      },
     }),
-    { name: 'auth-storage' }
+    {
+      name: 'auth-storage',
+    }
   )
 );
 

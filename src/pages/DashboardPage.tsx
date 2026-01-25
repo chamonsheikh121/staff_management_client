@@ -98,7 +98,7 @@ export default function DashboardPage() {
         <div>
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <p className="text-muted-foreground">
-            Welcome back! Here's what's happening today.
+            Welcome back! Here&apos;s what&apos;s happening today.
           </p>
         </div>
 
@@ -142,7 +142,7 @@ export default function DashboardPage() {
               <div>
                 <h3 className="font-semibold">Staff Load</h3>
                 <p className="text-sm text-muted-foreground">
-                  Today's appointment distribution
+                  Today&apos;s appointment distribution
                 </p>
               </div>
               <TrendingUp className="h-5 w-5 text-muted-foreground" />
@@ -189,7 +189,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="font-semibold">Appointment Status</h3>
-                <p className="text-sm text-muted-foreground">Today's breakdown</p>
+                <p className="text-sm text-muted-foreground">Today&apos;s breakdown</p>
               </div>
             </div>
             <div className="h-64 flex items-center justify-center">
@@ -245,7 +245,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="font-semibold">Upcoming Appointments</h3>
-                <p className="text-sm text-muted-foreground">Today's schedule</p>
+                <p className="text-sm text-muted-foreground">Today&apos;s schedule</p>
               </div>
               <Link to="/appointments">
                 <Button variant="ghost" size="sm">

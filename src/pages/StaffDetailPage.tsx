@@ -134,7 +134,7 @@ export default function StaffDetailPage() {
                 <Calendar className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Today's Total</p>
+                <p className="text-sm text-muted-foreground">Today&apos;s Total</p>
                 <p className="text-2xl font-bold">{stats.total}</p>
               </div>
             </div>
@@ -268,9 +268,8 @@ export default function StaffDetailPage() {
 
         {/* Today's Appointments */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Today's Appointments</h3>
-          <div className="space-y-4">
-            {todayAppointments.length > 0 ? (
+          <h3 className="text-lg font-semibold mb-4">Today&apos;s Appointments</h3>
+          <div className="space-y-4">{todayAppointments.length > 0 ? (
               todayAppointments.map((appointment) => (
                 <AppointmentCard
                   key={appointment.id}
