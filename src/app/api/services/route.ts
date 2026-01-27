@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://52.63.153.21:3000';
 
 // GET - Fetch all services from backend
 export async function GET() {

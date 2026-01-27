@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://52.63.153.21:3000';
 
 export async function registerUser(data: {
   name: string;

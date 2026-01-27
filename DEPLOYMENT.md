@@ -196,7 +196,7 @@ docker build -t staff-management-client:local .
 
 # Run container
 docker run -p 3000:3000 \
-  -e NEXT_PUBLIC_API_URL=http://localhost:5000 \
+  -e NEXT_PUBLIC_API_URL=http://52.63.153.21:3000 \
   staff-management-client:local
 
 # Access: http://localhost:3000
