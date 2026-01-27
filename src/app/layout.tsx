@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Staff Management System',
   description: 'Manage your staff and appointments efficiently',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
