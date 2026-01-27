@@ -1,73 +1,66 @@
-# Welcome to your Lovable project
+# Staff Management System
 
-## Project info
+A modern, full-featured staff and appointment management system built with Next.js and TypeScript.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**Live Demo**: [https://staff-management-client.vercel.app/](https://staff-management-client.vercel.app/)
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- 📅 **Appointment Management** - Schedule, track, and manage customer appointments
+- 👥 **Staff Management** - Organize staff members, schedules, and availability
+- 📊 **Dashboard Analytics** - Real-time insights and performance metrics
+- 🔐 **Authentication** - Secure user registration, login, and email verification
+- 📱 **Responsive Design** - Seamless experience across all devices
+- 🎨 **Modern UI** - Built with shadcn/ui components and Tailwind CSS
+- 🌓 **Dark Mode** - Light and dark theme support
+- 📝 **Activity Logging** - Comprehensive audit trail of all system actions
 
-**Use Lovable**
+## Technology Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **State Management**: Zustand
+- **Date Handling**: date-fns
+- **Deployment**: Vercel
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js 18+ or Bun
+- npm, pnpm, or bun
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd staff_management_client
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+pnpm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Start the development server
+pnpm dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── app/              # Next.js app router pages
+├── components/       # Reusable UI components
+├── hooks/           # Custom React hooks
+├── lib/             # Utility functions
+└── store/           # State management
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## License
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT
