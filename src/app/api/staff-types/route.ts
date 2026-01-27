@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
+export const dynamic = 'force-dynamic';
+
 const API_URL = 'http://localhost:5000';
 
 // GET - Fetch all staff types from backend
