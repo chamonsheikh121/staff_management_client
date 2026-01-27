@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "type-check": "tsc --noEmit",
+    "ci:check": "npm run type-check && npm run lint && npm run test && npm run build",
+    "ci:fix": "next lint --fix"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
