@@ -231,7 +231,9 @@ export default function ActivityPage() {
                         )}
                       </div>
                       <span className="text-xs text-muted-foreground whitespace-nowrap">
-                        {format(new Date(log.timestamp), 'MMM dd, yyyy hh:mm a')}
+                        {log.timestamp && !isNaN(new Date(log.timestamp).getTime())
+                          ? format(new Date(log.timestamp), 'MMM dd, yyyy hh:mm a')
+                          : '--'}
                       </span>
                     </div>
                     <p className="text-sm mb-2">{log.description}</p>

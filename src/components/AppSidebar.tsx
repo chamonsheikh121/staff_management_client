@@ -41,16 +41,16 @@ export function AppSidebar() {
       <Button
         variant="ghost"
         size="icon"
-        className="fixed top-4 left-4 z-50 lg:hidden"
+        className="fixed  bg-green-100 top-4 left-4 z-50 lg:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        {isOpen ? <X className="h-5 w-5 " /> : <Menu className="h-5 w-5" />}
       </Button>
 
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0  bg-background/80 backdrop-blur-sm z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}

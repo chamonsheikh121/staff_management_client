@@ -325,26 +325,26 @@ export default function DashboardPage() {
           <div className="space-y-3">
             {dashboardData.upcomingAppointments.length > 0 ? (
               dashboardData.upcomingAppointments.map((appointment) => (
-                <div key={appointment.id} className="rounded-lg border bg-card p-4">
+                <div key={appointment?.id} className="rounded-lg border bg-card p-4">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold">{appointment.customerName}</h4>
+                        <h4 className="font-semibold">{appointment?.customerName}</h4>
                         <Badge variant="outline" className="text-xs">
-                          {appointment.status}
+                          {appointment?.status}
                         </Badge>
                       </div>
                       <p className="text-sm text-muted-foreground mb-2">
-                        {appointment.service.name}
+                        {appointment?.service?.name}
                       </p>
                       <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <div className="flex items-center gap-1.5">
                           <User className="h-3.5 w-3.5" />
-                          {appointment.staff.name}
+                          {appointment?.staff?.name}
                         </div>
                         <div className="flex items-center gap-1.5">
                           <Clock className="h-3.5 w-3.5" />
-                          {format(new Date(appointment.appointmentDateTime), 'hh:mm a')}
+                          {format(new Date(appointment?.appointmentDateTime), 'hh:mm a')}
                         </div>
                       </div>
                     </div>
