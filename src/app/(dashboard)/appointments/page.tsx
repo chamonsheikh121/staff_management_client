@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { PageLoader } from '@/components/PageLoader';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 import { AppointmentCard } from '@/components/AppointmentCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -413,7 +413,7 @@ export default function AppointmentsPage() {
           <h1 className="text-2xl font-bold">Appointments</h1>
           <p className="text-muted-foreground">Manage and schedule appointments</p>
         </div>
-        <PageLoader title="Loading Appointments" description="Fetching appointments data..." />
+        <SkeletonLoader type="table" count={5} />
       </div>
     );
   }

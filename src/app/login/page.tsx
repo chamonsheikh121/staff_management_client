@@ -6,11 +6,12 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { CalendarClock, Mail, Lock, ArrowRight, Loader2 } from 'lucide-react';
+import { CalendarClock, Mail, Lock, ArrowRight } from 'lucide-react';
 import { useAuthStore } from '@/store';
 import { toast } from 'sonner';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { loginUser, demoLogin as demoLoginAction } from '@/app/actions/auth';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -61,7 +62,7 @@ export default function LoginPage() {
         setIsLoading(false);
       }
     } else {
-      toast.error(result.error || 'Demo login failed');
+      toast.error('Demo login failed');
       setIsLoading(false);
     }
   };
@@ -134,7 +135,7 @@ export default function LoginPage() {
               disabled={isLoading}
             >
               {isLoading ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
+                <Skeleton className="h-5 w-16" />
               ) : (
                 <>
                   Sign In

@@ -25,7 +25,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { useState, useMemo, useEffect } from 'react';
-import { PageLoader } from '@/components/PageLoader';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
 
@@ -146,7 +146,7 @@ export default function ActivityPage() {
           <h1 className="text-2xl font-bold">Activity Log</h1>
           <p className="text-muted-foreground">Track all actions and changes</p>
         </div>
-        <PageLoader title="Loading Activity" description="Fetching activity logs..." />
+        <SkeletonLoader type="table" count={5} />
       </div>
     );
   }

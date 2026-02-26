@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 
-const API_URL = 'http://52.63.153.21:3000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 export async function registerUser(data: {
   name: string;
@@ -155,12 +155,19 @@ export async function resetPassword(data: {
 }
 
 export async function demoLogin() {
+  // Admin credentials for demo login
+  const adminCredentials = {
+    email: 'sheikhchamon8@gmail.com',
+    password: '123456',
+  };
+
   try {
-    const response = await fetch(`${API_URL}/auth/demo-login`, {
+    const response = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(adminCredentials),
     });
 
     const result = await response.json();
@@ -169,7 +176,7 @@ export async function demoLogin() {
       return { success: false, error: result.message || 'Demo login failed' };
     }
 
-    // Store token if provided
+    // Store token in cookies if provided
     if (result.data?.access_token) {
       cookies().set('auth-token', result.data.access_token, {
         httpOnly: true,

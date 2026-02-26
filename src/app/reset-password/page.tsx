@@ -6,7 +6,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { CalendarClock, Mail, Lock, ArrowRight, Loader2, RotateCw } from 'lucide-react';
+import { CalendarClock, Mail, Lock, ArrowRight, RotateCw } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { resetPassword, forgotPassword } from '@/app/actions/auth';
@@ -151,7 +152,7 @@ export default function ResetPasswordPage() {
               disabled={isLoading}
             >
               {isLoading ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
+                <Skeleton className="h-5 w-16" />
               ) : (
                 <>
                   Reset Password
@@ -170,7 +171,7 @@ export default function ResetPasswordPage() {
               disabled={isResending}
             >
               {isResending ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
+                <Skeleton className="h-5 w-20" />
               ) : (
                 <>
                   <RotateCw className="mr-2 h-5 w-5" />

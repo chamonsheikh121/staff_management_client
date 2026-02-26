@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
-import { PageLoader } from '@/components/PageLoader';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -252,7 +252,7 @@ export default function ServicesPage() {
           <h1 className="text-2xl font-bold">Services</h1>
           <p className="text-muted-foreground">Manage your service offerings</p>
         </div>
-        <PageLoader title="Loading Services" description="Fetching services data..." />
+        <SkeletonLoader type="table" count={5} />
       </div>
     );
   }
@@ -345,10 +345,8 @@ export default function ServicesPage() {
                     <SelectValue placeholder="Select staff type" />
                   </SelectTrigger>
                   <SelectContent>
-                    {isLoadingTypes ? (
-                      <SelectItem value="" disabled>Loading...</SelectItem>
-                    ) : staffTypes.length === 0 ? (
-                      <SelectItem value="" disabled>No staff types available</SelectItem>
+                    {!isLoadingTypes && staffTypes.length === 0 ? (
+                      <div className="p-2 text-sm text-muted-foreground">No staff types available</div>
                     ) : (
                       staffTypes.map((type) => (
                         <SelectItem key={type.id} value={type.id}>

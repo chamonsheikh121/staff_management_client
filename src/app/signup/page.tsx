@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { CalendarClock, Mail, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
+import { CalendarClock, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { registerUser } from '@/app/actions/auth';
@@ -126,7 +127,7 @@ export default function SignupPage() {
               disabled={isLoading}
             >
               {isLoading ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
+                <Skeleton className="h-5 w-16" />
               ) : (
                 <>
                   Create Account

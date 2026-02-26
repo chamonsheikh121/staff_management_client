@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { StatsCard } from '@/components/StatsCard';
-import { PageLoader } from '@/components/PageLoader';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -129,7 +129,7 @@ export default function DashboardPage() {
           <h1 className="text-2xl font-bold">Dashboard</h1>
           <p className="text-muted-foreground">Welcome back! Here&apos;s what&apos;s happening today.</p>
         </div>
-        <PageLoader title="Loading Dashboard" description="Fetching your dashboard data..." />
+        <SkeletonLoader type="page" />
       </div>
     );
   }

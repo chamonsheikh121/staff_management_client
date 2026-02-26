@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { PageLoader } from '@/components/PageLoader';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -188,7 +188,7 @@ export default function QueuePage() {
             Manage appointments waiting for staff assignment
           </p>
         </div>
-        <PageLoader title="Loading Queue" description="Fetching queued appointments..." />
+        <SkeletonLoader type="table" count={5} />
       </div>
     );
   }

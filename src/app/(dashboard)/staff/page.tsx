@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { PageLoader } from '@/components/PageLoader';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 import { StaffCard } from '@/components/StaffCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -321,7 +321,7 @@ export default function StaffPage() {
           <h1 className="text-2xl font-bold">Staff</h1>
           <p className="text-muted-foreground">Manage your team members</p>
         </div>
-        <PageLoader title="Loading Staff" description="Fetching staff data..." />
+        <SkeletonLoader type="table" count={5} />
       </div>
     );
   }
@@ -500,9 +500,11 @@ export default function StaffPage() {
                   </SelectTrigger>
                   <SelectContent>
                     {staffTypes.map((type) => (
-                      <SelectItem key={type.id} value={type.id || ''}>
-                        {type.name}
-                      </SelectItem>
+                      type.id && (
+                        <SelectItem key={type.id} value={type.id}>
+                          {type.name}
+                        </SelectItem>
+                      )
                     ))}
                   </SelectContent>
                 </Select>
