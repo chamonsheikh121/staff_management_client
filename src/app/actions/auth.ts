@@ -162,7 +162,14 @@ export async function demoLogin() {
   };
 
   try {
-    const response = await fetch(`${API_URL}/auth/login`, {
+    const loginUrl = `${API_URL}/auth/login`;
+    
+    // Log for debugging (remove in production if needed)
+    console.log('Demo Login Attempt - URL:', loginUrl);
+    console.log('API_URL:', API_URL);
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+
+    const response = await fetch(loginUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -173,6 +180,7 @@ export async function demoLogin() {
     const result = await response.json();
 
     if (!response.ok) {
+      console.error('Demo Login Failed:', result);
       return { success: false, error: result.message || 'Demo login failed' };
     }
 
@@ -188,6 +196,7 @@ export async function demoLogin() {
 
     return { success: true, data: result.data };
   } catch (error) {
+    console.error('Demo login error:', error);
     return { success: false, error: 'Network error. Please try again.' };
   }
 }
