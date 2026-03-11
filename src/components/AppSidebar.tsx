@@ -23,6 +23,16 @@ import { useState } from 'react';
 
 ;
 
+
+const navigation = [
+  { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { name: 'Appointments', href: '/appointments', icon: Calendar },
+  { name: 'Staff', href: '/staff', icon: Users },
+  { name: 'Services', href: '/services', icon: Briefcase },
+  { name: 'Waiting Queue', href: '/queue', icon: Clock },
+  { name: 'Activity Log', href: '/activity', icon: Activity },
+]
+
 export function AppSidebar() {
   const pathname = usePathname();
   const { user, logout } = useAuthStore();
